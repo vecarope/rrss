@@ -1,0 +1,36 @@
+ {% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<body class="login-page">
+    <div class="twitter-login-box">
+        <header>
+            <img src='{% static 'app/media/web/icon1.png' %}' alt="logo">
+            <h1>Inicia Sesión</h1>
+        </header>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-wrapper">
+                <label for="user-name-id">Nombre usuario</label>
+                {{ form.username }}
+            </div>
+
+            <div class="input-wrapper">
+                <label for="password-id">Contraseña </label>
+                {{ form.password }}
+            </div>
+            {% if form.errors %}
+            <p>Usuario o contraseña incorrecta.</p>
+            {% endif %}
+
+            <button class="twitter-btn"> Iniciar sesion </button>
+        </form>
+
+        <div class="footer">
+            <a href="{% url  'registro' %}">Olvidaste la contraseña ? </a> . 
+            <a href="{% url 'registro' %}">no tienes cuenta? Registrate! </a>
+        </div>
+
+    </div>
+
+{% endblock %}

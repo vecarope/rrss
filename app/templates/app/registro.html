@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<body class="login-page">
+    <div class="twitter-login-box">
+        <header>
+            <img src='{% static 'app/media/web/icon1.png' %}' alt="logo">
+            <h1>Registrate en JOBS </h1>
+        </header>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-wrapper">
+                <label for="user-name-id">Nombre</label>
+                {{ form.first_name }}
+            </div>
+            <div class="input-wrapper">
+                <label for="user-name-id">Nombre usuario</label>
+                {{ form.username }}
+            </div>
+            <div class="input-wrapper">
+                <label for="user-name-id">Email</label>
+                {{ form.email }}
+            </div>
+
+            <div class="input-wrapper">
+                <label for="password-id">Contraseña</label>
+                {{ form.password1 }}
+            </div>
+            <div class="input-wrapper">
+                <label for="password-id">Confirmar contraseña</label>
+                {{ form.password2 }}
+            </div>
+
+            <button class="twitter-btn">Registrarse</button>
+        </form>
+
+        <div class="footer">
+            <a href="{%  url 'login' %}">¿Ya tienes una cuenta? Login</a>
+        </div>
+
+    </div>
+
+{% endblock  %}

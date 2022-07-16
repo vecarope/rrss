@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+    <div id="main" class="container-fluid d-flex">
+        <div class="">
+            <div id="inputTweetArea" class="tweet-wrap2">
+                <div class="d-flex">
+                    <div class="col-xs">
+                        <img src="{{ request.user.perfil.img_user.url }}" alt="" class="avator">
+                    </div>
+                    <form class="col pr-0" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="input-wrapper">
+                            <label>Nombre</label>
+                            {{ usuario_form.first_name }}
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="user-name-id">Nombre Usuario</label>
+                            {{ usuario_form.username }}
+                        </div>
+                        <div class="input-wrapper">
+                            <label>Profesion</label>
+                            {{ perfil_form.prof }}
+                        </div>
+                        <div class="input-wrapper">
+                            <label>Agregar foto perfil </label>
+                            {{ perfil_form.img_user }}
+                        </div>
+                        <div class="input-wrapper">
+                            <label>Agregar Curriculum </label>
+                        {{ perfil_form.cv}}
+                        </div>
+                        <button class="twitter-btn">Actualizar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
